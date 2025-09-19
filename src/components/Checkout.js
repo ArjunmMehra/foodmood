@@ -22,7 +22,7 @@ export default function Checkout({ cart }) {
         </Button>
       </a>
 
-      <Typography sx={{ mt: 3 }}>Or call us: 📞 9999999999</Typography>
+      <Typography sx={{ mt: 3 }}>Or call us: 📞 9873398504</Typography>
       <Typography sx={{ mt: 1 }}>Scan & Pay:</Typography>
       <img src="/qr.png" alt="QR Code" width="200" />
     </div>
