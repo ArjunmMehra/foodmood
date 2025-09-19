@@ -13,7 +13,7 @@ export default function Checkout({ cart }) {
       <Typography variant="body1">Total: ₹{total}</Typography>
 
       <a
-        href={`https://wa.me/919999999999?text=${message}`}
+        href={`https://wa.me/919873398504?text=${message}`}
         target="_blank"
         rel="noopener noreferrer"
       >
