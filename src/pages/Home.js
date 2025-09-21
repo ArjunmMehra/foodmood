@@ -55,8 +55,8 @@ export default function Home({ addToCart }) {
             sx={{
               maxWidth: 320,
               margin: "auto",
-              borderRadius: "16px",
-              boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+              border: "1px solid #fbc02d",
+              boxShadow: "0 6px 12px rgba(46, 125, 50, 0.2)",
               transition: "transform 0.3s, box-shadow 0.3s",
               "&:hover": {
                 transform: "translateY(-5px)",
@@ -104,9 +104,9 @@ export default function Home({ addToCart }) {
                   onClick={() => handleRemoveFromCart(item)}
                   disabled={!cartCounts[item.id]}
                   sx={{
-                    minWidth: "40px",
+                    minWidth: "60px",
                     fontWeight: "bold",
-                    borderRadius: "50%",
+                    borderRadius: "10%",
                   }}
                 >
                   -
@@ -119,9 +119,9 @@ export default function Home({ addToCart }) {
                   color="primary"
                   onClick={() => handleAddToCart(item)}
                   sx={{
-                    minWidth: "40px",
+                    minWidth: "60px",
                     fontWeight: "bold",
-                    borderRadius: "50%",
+                    borderRadius: "10%",
                   }}
                 >
                   +

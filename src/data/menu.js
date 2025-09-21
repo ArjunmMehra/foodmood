@@ -3,10 +3,9 @@ export const menu = {
     {
       id: 3,
       name: "Gulab Jamun (500g)",
-      price: 300,
+      price: 380,
       img: "images/gulab-jamun.jpg",
     },
-    { id: 4, name: "Rasgulla (500g)", price: 280, img: "images/rasgulla.jpg" },
     { id: 5, name: "Kalakand", price: 540, img: "images/kalakand.jpeg" },
     { id: 6, name: "Channa Badam", price: 800, img: "images/channa-badam.jpeg" },
     { id: 7, name: "Khoya Roll", price: 520, img: "images/khoya-roll.jpeg" },
