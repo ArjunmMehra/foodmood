@@ -4,14 +4,12 @@ import { Grid, Card, CardMedia, CardContent, Typography, Button, Box, Tabs, Tab 
 
 export default function Home({ addToCart }) {
   const [cartCounts, setCartCounts] = useState(() => {
-    // Load initial state from localStorage
     const savedCounts = localStorage.getItem("cartCounts");
     return savedCounts ? JSON.parse(savedCounts) : {};
   });
   const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
-    // Save cartCounts to localStorage whenever it changes
     localStorage.setItem("cartCounts", JSON.stringify(cartCounts));
   }, [cartCounts]);
 
@@ -41,9 +39,14 @@ export default function Home({ addToCart }) {
     <Grid container spacing={2}>
       {items.map((item) => (
         <Grid item xs={12} sm={6} md={4} key={item.id}>
-          <Card sx={{ margin: "auto" }}>
-            <CardMedia component="img" height="140" image={item.img} alt={item.name} />
-            <CardContent>
+          <Card sx={{ width: "300px", height: "400px", margin: "auto", display: "flex", flexDirection: "column" }}>
+            <CardMedia
+              component="img"
+              image={item.img}
+              alt={item.name}
+              sx={{ width: "100%", height: "200px", objectFit: "cover" }}
+            />
+            <CardContent sx={{ flexGrow: 1 }}>
               <Typography variant="h6">{item.name}</Typography>
               <Typography color="text.secondary">₹{item.price}</Typography>
               <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
@@ -75,16 +78,13 @@ export default function Home({ addToCart }) {
 
   return (
     <div style={{ padding: "16px" }}>
-      {/* Tabs for Categories */}
       <Tabs value={selectedTab} onChange={handleTabChange} centered>
-        <Tab label="Main Course" />
         <Tab label="Sweets" />
+        <Tab label="Main Course" />
       </Tabs>
-
-      {/* Render Items Based on Selected Tab */}
       <Box sx={{ mt: 3 }}>
-        {selectedTab === 0 && renderItems(menu.mainCourse)}
-        {selectedTab === 1 && renderItems(menu.sweets)}
+        {selectedTab === 0 && renderItems(menu.sweets)}
+        {selectedTab === 1 && renderItems(menu.mainCourse)}
       </Box>
     </div>
   );
