@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { menu } from "../data/menu";
-import { Grid, Card, CardMedia, CardContent, Typography, Button, Box, Tabs, Tab } from "@mui/material";
+import {
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Button,
+  Box,
+  Tabs,
+  Tab,
+  Paper,
+  Chip,
+} from "@mui/material";
 
 export default function Home({ addToCart }) {
   const [cartCounts, setCartCounts] = useState(() => {
@@ -36,35 +48,81 @@ export default function Home({ addToCart }) {
   };
 
   const renderItems = (items) => (
-    <Grid container spacing={2}>
+    <Grid container spacing={3} justifyContent="center">
       {items.map((item) => (
         <Grid item xs={12} sm={6} md={4} key={item.id}>
-          <Card sx={{ width: "300px", height: "400px", margin: "auto", display: "flex", flexDirection: "column" }}>
+          <Card
+            sx={{
+              maxWidth: 320,
+              margin: "auto",
+              borderRadius: "16px",
+              boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+              transition: "transform 0.3s, box-shadow 0.3s",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                boxShadow: "0 12px 30px rgba(0,0,0,0.2)",
+              },
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <CardMedia
               component="img"
               image={item.img}
               alt={item.name}
-              sx={{ width: "100%", height: "200px", objectFit: "cover" }}
+              sx={{
+                height: 200,
+                objectFit: "cover",
+                borderTopLeftRadius: "16px",
+                borderTopRightRadius: "16px",
+              }}
             />
             <CardContent sx={{ flexGrow: 1 }}>
-              <Typography variant="h6">{item.name}</Typography>
-              <Typography color="text.secondary">₹{item.price}</Typography>
-              <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+              <Typography variant="h6" fontWeight="bold" gutterBottom>
+                {item.name}
+              </Typography>
+              <Typography color="text.secondary" gutterBottom>
+                ₹{item.price}
+              </Typography>
+              <Chip
+                label="Bestseller"
+                color="secondary"
+                size="small"
+                sx={{ mb: 2 }}
+              />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  mt: 1,
+                }}
+              >
                 <Button
                   variant="outlined"
                   color="secondary"
                   onClick={() => handleRemoveFromCart(item)}
                   disabled={!cartCounts[item.id]}
-                  sx={{ minWidth: "40px" }}
+                  sx={{
+                    minWidth: "40px",
+                    fontWeight: "bold",
+                    borderRadius: "50%",
+                  }}
                 >
                   -
                 </Button>
-                <Typography sx={{ mx: 2 }}>{cartCounts[item.id] || 0}</Typography>
+                <Typography sx={{ mx: 2, fontWeight: "bold" }}>
+                  {cartCounts[item.id] || 0}
+                </Typography>
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   color="primary"
                   onClick={() => handleAddToCart(item)}
-                  sx={{ minWidth: "40px" }}
+                  sx={{
+                    minWidth: "40px",
+                    fontWeight: "bold",
+                    borderRadius: "50%",
+                  }}
                 >
                   +
                 </Button>
@@ -77,15 +135,46 @@ export default function Home({ addToCart }) {
   );
 
   return (
-    <div style={{ padding: "16px" }}>
-      <Tabs value={selectedTab} onChange={handleTabChange} centered>
-        <Tab label="Sweets" />
-        <Tab label="Main Course" />
+    <Box
+      sx={{
+        padding: "24px",
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #fff7f0, #fff0f5)",
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          padding: "16px",
+          marginBottom: "24px",
+          borderRadius: "16px",
+          textAlign: "center",
+          background: "linear-gradient(90deg, #ff9a9e, #fad0c4)",
+          color: "#fff",
+        }}
+      >
+        <Typography variant="h5" fontWeight="bold">
+          Serving love in every meal and mithai 🍴🍬
+        </Typography>
+      </Paper>
+
+      <Tabs
+        value={selectedTab}
+        onChange={handleTabChange}
+        centered
+        sx={{
+          mb: 4,
+          "& .MuiTab-root": { fontWeight: "bold" },
+          "& .Mui-selected": { color: "#d81b60 !important" },
+          "& .MuiTabs-indicator": { backgroundColor: "#d81b60" },
+        }}
+      >
+        <Tab label="🍬 Sweets" />
+        <Tab label="🍛 Main Course" />
       </Tabs>
-      <Box sx={{ mt: 3 }}>
-        {selectedTab === 0 && renderItems(menu.sweets)}
-        {selectedTab === 1 && renderItems(menu.mainCourse)}
-      </Box>
-    </div>
+
+      <Box>{selectedTab === 0 && renderItems(menu.sweets)}</Box>
+      <Box>{selectedTab === 1 && renderItems(menu.mainCourse)}</Box>
+    </Box>
   );
 }
