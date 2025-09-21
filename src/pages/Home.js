@@ -53,7 +53,8 @@ export default function Home({ addToCart }) {
         <Grid item xs={12} sm={6} md={4} key={item.id}>
           <Card
             sx={{
-              maxWidth: 320,
+              width: 320,
+              height: 420, // ✅ fixed card height
               margin: "auto",
               border: "1px solid #fbc02d",
               boxShadow: "0 6px 12px rgba(46, 125, 50, 0.2)",
@@ -71,31 +72,41 @@ export default function Home({ addToCart }) {
               image={item.img}
               alt={item.name}
               sx={{
-                height: 200,
+                height: 180, // ✅ fixed image height
                 objectFit: "cover",
                 borderTopLeftRadius: "16px",
                 borderTopRightRadius: "16px",
               }}
             />
-            <CardContent sx={{ flexGrow: 1 }}>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                {item.name}
-              </Typography>
-              <Typography color="text.secondary" gutterBottom>
-                ₹{item.price}
-              </Typography>
-              <Chip
-                label="Bestseller"
-                color="secondary"
-                size="small"
-                sx={{ mb: 2 }}
-              />
+            <CardContent
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <Box>
+                <Typography variant="h6" fontWeight="bold" gutterBottom>
+                  {item.name}
+                </Typography>
+                <Typography color="text.secondary" gutterBottom>
+                  ₹{item.price}
+                </Typography>
+                <Chip
+                  label="Bestseller"
+                  color="secondary"
+                  size="small"
+                  sx={{ mb: 2 }}
+                />
+              </Box>
+  
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  mt: 1,
+                  mt: "auto",
                 }}
               >
                 <Button
@@ -133,6 +144,7 @@ export default function Home({ addToCart }) {
       ))}
     </Grid>
   );
+  
 
   return (
     <Box

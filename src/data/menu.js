@@ -51,8 +51,8 @@ export const menu = {
     { id: 17, name: "Kaju Barfi", price: 900, img: "images/kaju-barfi.jpeg" },
   ],
   mainCourse: [
-    { id: 1, name: "Paneer Tikka", price: 250, img: "images/paneer-tikka.jpeg" },
-    { id: 2, name: "Dal Tadka", price: 180, img: "images/dal-tadka.jpeg" },
+    // { id: 1, name: "Paneer Tikka", price: 250, img: "images/paneer-tikka.jpeg" },
+    // { id: 2, name: "Dal Tadka", price: 180, img: "images/dal-tadka.jpeg" },
     {
       id: 3,
       name: "Paneer Butter Masala (Half)",
@@ -107,11 +107,36 @@ export const menu = {
       price: 120,
       img: "images/chole-masala.jpeg",
     },
+
     {
       id: 12,
       name: "Chole Masala (Full)",
       price: 195,
       img: "images/chole-masala.jpeg",
+    },
+    {
+      id: 11,
+      name: "Dum Aaloo (Half)",
+      price: 130,
+      img: "images/dum-aaloo.jpeg",
+    },
+    {
+      id: 11,
+      name: "Dum Aaloo (full)",
+      price: 230,
+      img: "images/chole-masala.jpeg",
+    },
+    {
+      id: 11,
+      name: "Rajma masala (Half)",
+      price: 120,
+      img: "images/rajma-masala.jpeg",
+    },
+    {
+      id: 11,
+      name: "Rajma masala (full)",
+      price: 200,
+      img: "images/rajma-masala.jpeg",
     },
     {
       id: 13,
@@ -133,13 +158,13 @@ export const menu = {
       id: 19,
       name: "Dal Tadka (Half)",
       price: 120,
-      img: "images/dal-tadka.jpeg",
+      img: "images/dal-tadka.webp",
     },
     {
       id: 20,
       name: "Dal Tadka (Full)",
       price: 190,
-      img: "images/dal-tadka.jpeg",
+      img: "images/dal-tadka.webp",
     },
     {
       id: 21,
@@ -174,7 +199,6 @@ export const menu = {
       price: 15,
       img: "images/tawa-butter-roti.jpeg",
     },
-    { id: 29, name: "Missi Roti", price: 55, img: "images/missi-roti.jpeg" },
     {
       id: 30,
       name: "Plain Rice (Half)",

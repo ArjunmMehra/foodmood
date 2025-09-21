@@ -71,7 +71,7 @@ function App() {
           background: "linear-gradient(90deg, #2e7d32, #fbc02d)",
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ pl: 0 }}>
           {/* Logo as Home Icon */}
           <Box
             sx={{
