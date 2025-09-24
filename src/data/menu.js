@@ -6,8 +6,8 @@ export const menu = {
       name: "Gulab Jamun",
       img: "images/gulab-jamun.jpg",
       variants: [
-        { label: "500g", price: 380 },
-        { label: "1kg", price: 720 },
+        { label: "500g", price: 190 },
+        { label: "1kg", price: 380 },
       ],
     },
     {
@@ -15,8 +15,8 @@ export const menu = {
       name: "Kalakand",
       img: "images/kalakand.jpeg",
       variants: [
-        { label: "500g", price: 540 },
-        { label: "1kg", price: 1050 },
+        { label: "500g", price: 270 },
+        { label: "1kg", price: 540 },
       ],
     },
     {
@@ -24,8 +24,8 @@ export const menu = {
       name: "Channa Badam",
       img: "images/channa-badam.jpeg",
       variants: [
-        { label: "500g", price: 800 },
-        { label: "1kg", price: 1550 },
+        { label: "500g", price: 400 },
+        { label: "1kg", price: 800 },
       ],
     },
     {
@@ -33,8 +33,8 @@ export const menu = {
       name: "Khoya Roll",
       img: "images/khoya-roll.jpeg",
       variants: [
-        { label: "500g", price: 520 },
-        { label: "1kg", price: 1000 },
+        { label: "500g", price: 260 },
+        { label: "1kg", price: 520 },
       ],
     },
     {
@@ -42,8 +42,8 @@ export const menu = {
       name: "Anjeer Kalakand",
       img: "images/anjeer-kalakand.jpeg",
       variants: [
-        { label: "500g", price: 580 },
-        { label: "1kg", price: 1100 },
+        { label: "500g", price: 290 },
+        { label: "1kg", price: 580 },
       ],
     },
     {
@@ -51,8 +51,8 @@ export const menu = {
       name: "Nariyal Barfi",
       img: "images/nariyal-barfi.jpeg",
       variants: [
-        { label: "500g", price: 500 },
-        { label: "1kg", price: 950 },
+        { label: "500g", price: 250 },
+        { label: "1kg", price: 500 },
       ],
     },
     {
@@ -60,8 +60,8 @@ export const menu = {
       name: "Lachha Rabri",
       img: "images/lachha-rabri.jpeg",
       variants: [
-        { label: "500g", price: 500 },
-        { label: "1kg", price: 950 },
+        { label: "500g", price: 250 },
+        { label: "1kg", price: 500 },
       ],
     },
     {
@@ -69,8 +69,8 @@ export const menu = {
       name: "Malai Chaap",
       img: "images/malai-chaap.jpeg",
       variants: [
-        { label: "500g", price: 500 },
-        { label: "1kg", price: 950 },
+        { label: "500g", price: 250 },
+        { label: "1kg", price: 500 },
       ],
     },
     {
@@ -78,8 +78,8 @@ export const menu = {
       name: "Kheer Mohan",
       img: "images/kheer-mohan.jpeg",
       variants: [
-        { label: "500g", price: 480 },
-        { label: "1kg", price: 900 },
+        { label: "500g", price: 240 },
+        { label: "1kg", price: 480 },
       ],
     },
     {
@@ -87,8 +87,8 @@ export const menu = {
       name: "Atta Ladoo",
       img: "images/atta-ladoo.jpeg",
       variants: [
-        { label: "500g", price: 500 },
-        { label: "1kg", price: 950 },
+        { label: "500g", price: 250 },
+        { label: "1kg", price: 500 },
       ],
     },
     {
@@ -96,8 +96,8 @@ export const menu = {
       name: "Besan Dry Fruit Ladoo",
       img: "images/besan-dry-fruit-ladoo.jpeg",
       variants: [
-        { label: "500g", price: 500 },
-        { label: "1kg", price: 950 },
+        { label: "500g", price: 250 },
+        { label: "1kg", price: 500 },
       ],
     },
     {
@@ -105,8 +105,8 @@ export const menu = {
       name: "Plain Boondi Ladoo",
       img: "images/plain-boondi-ladoo.jpeg",
       variants: [
-        { label: "500g", price: 300 },
-        { label: "1kg", price: 580 },
+        { label: "500g", price: 150 },
+        { label: "1kg", price: 300 },
       ],
     },
     {
@@ -114,8 +114,8 @@ export const menu = {
       name: "Desi Ghee Boondi Ladoo",
       img: "images/desi-ghee-boondi-ladoo.jpeg",
       variants: [
-        { label: "500g", price: 440 },
-        { label: "1kg", price: 850 },
+        { label: "500g", price: 220 },
+        { label: "1kg", price: 440 },
       ],
     },
     {
@@ -123,8 +123,8 @@ export const menu = {
       name: "Kaju Barfi",
       img: "images/kaju-barfi.jpeg",
       variants: [
-        { label: "500g", price: 900 },
-        { label: "1kg", price: 1750 },
+        { label: "500g", price: 450 },
+        { label: "1kg", price: 900 },
       ],
     },
   ],

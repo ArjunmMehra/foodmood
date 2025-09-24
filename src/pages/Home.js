@@ -13,6 +13,7 @@ import {
   Tab,
   Select,
   MenuItem,
+  Paper
 } from "@mui/material";
 import { menu } from "../data/menu";
 
@@ -134,11 +135,15 @@ export default function Home({ goToCart }) {
 
   return (
     <Box sx={{ padding: "24px", minHeight: "100vh" }}>
-      <Tabs
-        value={selectedTab}
-        onChange={(e, v) => setSelectedTab(v)}
-        centered
+      <Paper
+        elevation={3}
+        sx={{ padding: "16px", marginBottom: "24px", textAlign: "center" }}
       >
+        <Typography variant="body2">
+          Serving love in every meal and mithai🍴🍬
+        </Typography>
+      </Paper>
+      <Tabs value={selectedTab} onChange={(e, v) => setSelectedTab(v)} centered>
         <Tab label="🍬 Sweets" />
         <Tab label="🍛 Main Course" />
       </Tabs>
