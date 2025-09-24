@@ -12,44 +12,45 @@ import {
   CssBaseline,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useSelector } from "react-redux";
+import { selectCart } from "./store/cartSlice";
 
 function App() {
-  const [cart, setCart] = useState([]);
   const [step, setStep] = useState("home");
+  const cart = useSelector(selectCart);
 
-  const addToCart = (item) => setCart([...cart, item]);
-  // Create a green and yellow theme with tasty vibes
+  // Theme config
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#2e7d32", // Fresh organic green
-        light: "#60ad5e", // Soft green
-        dark: "#005005", // Deep forest
+        main: "#2e7d32",
+        light: "#60ad5e",
+        dark: "#005005",
         contrastText: "#fff",
       },
       secondary: {
-        main: "#fbc02d", // Lemon yellow
-        light: "#fff263", // Bright yellow
-        dark: "#c49000", // Honey gold
+        main: "#fbc02d",
+        light: "#fff263",
+        dark: "#c49000",
         contrastText: "#000",
       },
       background: {
-        default: "#fdfdf6", // light off-white with a warm tone
+        default: "#fdfdf6",
         paper: "#ffffff",
       },
       error: {
-        main: "#d32f2f", // red for alerts
+        main: "#d32f2f",
       },
     },
     typography: {
       fontFamily: "'Poppins', 'Roboto', sans-serif",
       h4: {
         fontWeight: 700,
-        color: "#2e7d32", // rich green for headings
+        color: "#2e7d32",
       },
       h6: {
         fontWeight: 600,
-        color: "#fbc02d", // golden accent for sub-headings
+        color: "#fbc02d",
       },
       button: {
         textTransform: "none",
@@ -58,7 +59,7 @@ function App() {
       },
     },
     shape: {
-      borderRadius: 16, // rounded corners everywhere
+      borderRadius: 16,
     },
   });
 
@@ -90,30 +91,12 @@ function App() {
               sx={{
                 height: 60,
                 width: 60,
-                mb: 0.1, // small spacing below logo
+                mb: 0.1,
               }}
             />
-            {/* <Typography
-              variant="caption"
-              sx={{
-                color: "white",
-                fontWeight: "600",
-                lineHeight: 1.2,
-                textAlign: "center",
-              }}
-            >
-              Food & Sweets
-              Gr Noida West
-            </Typography> */}
           </Box>
 
-          {/* <Typography
-            variant="h6"
-            sx={{ flexGrow: 1, cursor: "pointer" }}
-            onClick={() => setStep("home")}
-          >
-            🍴 Food & Sweets
-          </Typography> */}
+          {/* Cart Button */}
           <Button
             color="inherit"
             sx={{ marginLeft: "auto" }}
@@ -125,13 +108,9 @@ function App() {
       </AppBar>
 
       <Container sx={{ mt: 3 }}>
-        {step === "home" && (
-          <Home addToCart={addToCart} goToCart={() => setStep("cart")} />
-        )}
-        {step === "cart" && (
-          <Cart cart={cart} goToCheckout={() => setStep("checkout")} />
-        )}
-        {step === "checkout" && <Checkout cart={cart} />}
+        {step === "home" && <Home goToCart={() => setStep("cart")} />}
+        {step === "cart" && <Cart goToCheckout={() => setStep("checkout")} />}
+        {step === "checkout" && <Checkout />}
       </Container>
     </ThemeProvider>
   );
