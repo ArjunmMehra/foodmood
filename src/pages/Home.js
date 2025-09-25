@@ -17,6 +17,7 @@ import {
   TextField,
 } from "@mui/material";
 import { menu } from "../data/menu";
+import Promo from "../components/Promo";
 
 export default function Home({ goToCart }) {
   const dispatch = useDispatch();
@@ -153,6 +154,7 @@ export default function Home({ goToCart }) {
 
   return (
     <Box sx={{ padding: "24px", minHeight: "100vh" }}>
+      <Promo></Promo>
       <Paper
         elevation={3}
         sx={{ padding: "16px", marginBottom: "24px", textAlign: "center" }}
