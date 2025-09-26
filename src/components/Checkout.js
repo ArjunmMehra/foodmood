@@ -137,7 +137,7 @@ export default function Checkout() {
       {/* QR Code */}
       <Typography sx={{ mt: 4 }}>📷 Scan & Pay:</Typography>
       <Box sx={{ mt: 1 }}>
-        <img src="/qr.png" alt="QR Code" width="200" />
+        <img src="/images/qr.jpeg" alt="QR Code" width="200" />
       </Box>
     </Box>
   );
