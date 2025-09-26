@@ -135,8 +135,8 @@ export const menu = {
       name: "Paneer Butter Masala",
       img: "images/paneer-butter-masala.jpeg",
       variants: [
-        { label: "Half", price: 195 },
-        { label: "Full", price: 300 },
+        { label: "Half", price: 130 },
+        { label: "Full", price: 200 },
       ],
     },
     {
@@ -144,8 +144,8 @@ export const menu = {
       name: "Shahi Paneer",
       img: "images/shahi-paneer.jpeg",
       variants: [
-        { label: "Half", price: 130 },
-        { label: "Full", price: 210 },
+        { label: "Half", price: 125 },
+        { label: "Full", price: 180 },
       ],
     },
     {
@@ -153,8 +153,8 @@ export const menu = {
       name: "Matar Paneer",
       img: "images/matar-paneer.jpeg",
       variants: [
-        { label: "Half", price: 140 },
-        { label: "Full", price: 220 },
+        { label: "Half", price: 120 },
+        { label: "Full", price: 190 },
       ],
     },
     {
@@ -162,8 +162,8 @@ export const menu = {
       name: "Palak Paneer",
       img: "images/palak-paneer.jpeg",
       variants: [
-        { label: "Half", price: 160 },
-        { label: "Full", price: 270 },
+        { label: "Half", price: 120 },
+        { label: "Full", price: 200 },
       ],
     },
     {
@@ -171,26 +171,26 @@ export const menu = {
       name: "Chole Masala",
       img: "images/chole-masala.jpeg",
       variants: [
-        { label: "Half", price: 120 },
-        { label: "Full", price: 195 },
+        { label: "Half", price: 110 },
+        { label: "Full", price: 170 },
       ],
     },
     {
       id: 106,
-      name: "Dum Aaloo",
-      img: "images/dum-aaloo.jpeg",
+      name: "Rajma Masala",
+      img: "images/rajma-masala.jpeg",
       variants: [
-        { label: "Half", price: 130 },
-        { label: "Full", price: 230 },
+        { label: "Half", price: 110 },
+        { label: "Full", price: 170 },
       ],
     },
     {
       id: 107,
-      name: "Rajma Masala",
-      img: "images/rajma-masala.jpeg",
+      name: "Dum Aaloo",
+      img: "images/dum-aaloo.jpeg",
       variants: [
         { label: "Half", price: 120 },
-        { label: "Full", price: 200 },
+        { label: "Full", price: 180 },
       ],
     },
     {
@@ -199,7 +199,7 @@ export const menu = {
       img: "images/malai-kofta.jpeg",
       variants: [
         { label: "Half", price: 140 },
-        { label: "Full", price: 250 },
+        { label: "Full", price: 200 },
       ],
     },
     {
@@ -216,8 +216,8 @@ export const menu = {
       name: "Dal Fry",
       img: "images/dal-fry.jpeg",
       variants: [
-        { label: "Half", price: 100 },
-        { label: "Full", price: 160 },
+        { label: "Half", price: 90 },
+        { label: "Full", price: 140 },
       ],
     },
     {
@@ -225,8 +225,8 @@ export const menu = {
       name: "Dal Tadka",
       img: "images/dal-tadka.webp",
       variants: [
-        { label: "Half", price: 120 },
-        { label: "Full", price: 190 },
+        { label: "Half", price: 90 },
+        { label: "Full", price: 140 },
       ],
     },
     {
@@ -234,8 +234,8 @@ export const menu = {
       name: "Dal Makhni",
       img: "images/dal-makhni.jpeg",
       variants: [
-        { label: "Half", price: 130 },
-        { label: "Full", price: 240 },
+        { label: "Half", price: 120 },
+        { label: "Full", price: 170 },
       ],
     },
     {
@@ -254,103 +254,96 @@ export const menu = {
       id: 115,
       name: "Tandoori Butter Roti",
       img: "images/tandoori-butter-roti.jpeg",
-      variants: [{ label: "Single", price: 16 }],
+      variants: [{ label: "Single", price: 30 }],
     },
     {
       id: 116,
       name: "Plain Naan",
       img: "images/plain-naan.jpeg",
-      variants: [{ label: "Single", price: 45 }],
+      variants: [{ label: "Single", price: 25 }],
     },
     {
       id: 117,
       name: "Butter Naan",
       img: "images/butter-naan.jpeg",
-      variants: [{ label: "Single", price: 52 }],
+      variants: [{ label: "Single", price: 32 }],
     },
     {
       id: 118,
       name: "Tawa Butter Roti",
       img: "images/tawa-butter-roti.jpeg",
-      variants: [{ label: "Single", price: 15 }],
+      variants: [{ label: "Single", price: 12 }],
     },
     {
       id: 119,
-      name: "Plain Rice",
-      img: "images/plain-rice.jpeg",
-      variants: [
-        { label: "Half", price: 70 },
-        { label: "Full", price: 110 },
-      ],
+      name: "Missi Roti",
+      img: "images/missi-roti.jpeg",
+      variants: [{ label: "Single", price: 28 }],
     },
     {
       id: 120,
-      name: "Jeera Rice",
-      img: "images/jeera-rice.jpeg",
+      name: "Plain Rice",
+      img: "images/plain-rice.jpeg",
       variants: [
-        { label: "Half", price: 80 },
-        { label: "Full", price: 130 },
+        { label: "Half", price: 60 },
+        { label: "Full", price: 80 },
       ],
     },
     {
       id: 121,
-      name: "Veg Pulao",
-      img: "images/veg-pulao.jpeg",
-      variants: [{ label: "Full", price: 180 }],
+      name: "Jeera Rice",
+      img: "images/jeera-rice.jpeg",
+      variants: [
+        { label: "Half", price: 90 },
+        { label: "Full", price: 110 },
+      ],
     },
     {
       id: 122,
-      name: "Matar Pulao",
-      img: "images/matar-pulao.jpeg",
-      variants: [{ label: "Full", price: 210 }],
+      name: "Veg Pulao",
+      img: "images/veg-pulao.jpeg",
+      variants: [
+        { label: "Half", price: 100 },
+        { label: "Full", price: 150 },
+      ],
     },
     {
       id: 123,
-      name: "Aloo Paratha",
-      img: "images/aloo-paratha.jpeg",
-      variants: [{ label: "Single", price: 60 }],
+      name: "Matar Pulao",
+      img: "images/matar-pulao.jpeg",
+      variants: [
+        { label: "Full", price: 150 },
+      ],
     },
     {
       id: 124,
-      name: "Aloo Pyaz Paratha",
-      img: "images/aloo-pyaz-paratha.jpeg",
-      variants: [{ label: "Single", price: 70 }],
+      name: "Aloo Paratha",
+      img: "images/aloo-paratha.jpeg",
+      variants: [{ label: "Single", price: 50 }],
     },
     {
       id: 125,
-      name: "Aloo Gobhi Paratha",
-      img: "images/aloo-gobhi-paratha.jpeg",
-      variants: [{ label: "Single", price: 80 }],
+      name: "Pyaz Paratha",
+      img: "images/pyaz-paratha.jpeg",
+      variants: [{ label: "Single", price: 60 }],
     },
     {
       id: 126,
-      name: "Aloo Paneer Paratha",
-      img: "images/aloo-paneer-paratha.jpeg",
-      variants: [{ label: "Single", price: 90 }],
+      name: "Gobhi Paratha",
+      img: "images/gobhi-paratha.jpeg",
+      variants: [{ label: "Single", price: 70 }],
     },
     {
       id: 127,
-      name: "Pyaz Paratha",
-      img: "images/pyaz-paratha.jpeg",
+      name: "Paneer Paratha",
+      img: "images/paneer-paratha.jpeg",
       variants: [{ label: "Single", price: 90 }],
     },
     {
       id: 128,
-      name: "Gobhi Paratha",
-      img: "images/gobhi-paratha.jpeg",
-      variants: [{ label: "Single", price: 90 }],
-    },
-    {
-      id: 129,
-      name: "Paneer Paratha",
-      img: "images/paneer-paratha.jpeg",
-      variants: [{ label: "Single", price: 120 }],
-    },
-    {
-      id: 130,
       name: "Plain Paratha",
       img: "images/plain-paratha.jpeg",
-      variants: [{ label: "Single", price: 55 }],
+      variants: [{ label: "Single", price: 30 }],
     },
   ],
 };

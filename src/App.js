@@ -10,6 +10,7 @@ import {
   Container,
   Box,
   CssBaseline,
+  TextField,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
@@ -17,50 +18,24 @@ import { selectCart } from "./store/cartSlice";
 
 function App() {
   const [step, setStep] = useState("home");
+  const [search, setSearch] = useState(""); // 🔍 search state
   const cart = useSelector(selectCart);
 
   // Theme config
   const theme = createTheme({
     palette: {
-      primary: {
-        main: "#2e7d32",
-        light: "#60ad5e",
-        dark: "#005005",
-        contrastText: "#fff",
-      },
-      secondary: {
-        main: "#fbc02d",
-        light: "#fff263",
-        dark: "#c49000",
-        contrastText: "#000",
-      },
-      background: {
-        default: "#fdfdf6",
-        paper: "#ffffff",
-      },
-      error: {
-        main: "#d32f2f",
-      },
+      primary: { main: "#2e7d32", light: "#60ad5e", dark: "#005005", contrastText: "#fff" },
+      secondary: { main: "#fbc02d", light: "#fff263", dark: "#c49000", contrastText: "#000" },
+      background: { default: "#fdfdf6", paper: "#ffffff" },
+      error: { main: "#d32f2f" },
     },
     typography: {
       fontFamily: "'Poppins', 'Roboto', sans-serif",
-      h4: {
-        fontWeight: 700,
-        color: "#2e7d32",
-      },
-      h6: {
-        fontWeight: 600,
-        color: "#fbc02d",
-      },
-      button: {
-        textTransform: "none",
-        fontWeight: "bold",
-        borderRadius: "25px",
-      },
+      h4: { fontWeight: 700, color: "#2e7d32" },
+      h6: { fontWeight: 600, color: "#fbc02d" },
+      button: { textTransform: "none", fontWeight: "bold", borderRadius: "25px" },
     },
-    shape: {
-      borderRadius: 16,
-    },
+    shape: { borderRadius: 16 },
   });
 
   return (
@@ -73,7 +48,7 @@ function App() {
         }}
       >
         <Toolbar sx={{ pl: 0 }}>
-          {/* Logo as Home Icon */}
+          {/* Logo */}
           <Box
             sx={{
               display: "flex",
@@ -88,13 +63,24 @@ function App() {
               component="img"
               src={"images/logo.png"}
               alt="Logo"
-              sx={{
-                height: 60,
-                width: 60,
-                mb: 0.1,
-              }}
+              sx={{ height: 60, width: 60, mb: 0.1 }}
             />
           </Box>
+
+          {/* 🔍 Search Bar */}
+          {step === "home" && (
+            <TextField
+              size="small"
+              placeholder="Search..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              sx={{
+                backgroundColor: "white",
+                borderRadius: 2,
+                minWidth: { xs: "100px", sm: "250px" },
+              }}
+            />
+          )}
 
           {/* Cart Button */}
           <Button
@@ -108,7 +94,7 @@ function App() {
       </AppBar>
 
       <Container sx={{ mt: 3 }}>
-        {step === "home" && <Home goToCart={() => setStep("cart")} />}
+        {step === "home" && <Home goToCart={() => setStep("cart")} search={search} />}
         {step === "cart" && <Cart goToCheckout={() => setStep("checkout")} />}
         {step === "checkout" && <Checkout />}
       </Container>

@@ -14,19 +14,16 @@ import {
   Select,
   MenuItem,
   Paper,
-  TextField,
+  Stack,
 } from "@mui/material";
 import { menu } from "../data/menu";
-import Promo from "../components/Promo";
 
-export default function Home({ goToCart }) {
+export default function Home({ search }) {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedVariants, setSelectedVariants] = useState({});
-  const [search, setSearch] = useState("");
 
-  // find quantity of an item in cart
   const getQuantity = (id, variantLabel) => {
     const cartItem = items.find(
       (i) => i.id === id && i.variant === variantLabel
@@ -59,12 +56,21 @@ export default function Home({ goToCart }) {
 
           return (
             <Grid item xs={12} sm={6} md={4} key={item.id}>
-              <Card sx={{ width: 320, height: 380, margin: "auto" }}>
+              <Card
+                sx={{
+                  width: 320,
+                  height: 380,
+                  margin: "auto",
+                  transition: "0.3s",
+                  "&:hover": { boxShadow: 6, transform: "scale(1.03)" },
+                  borderRadius: 3,
+                }}
+              >
                 <CardMedia
                   component="img"
                   image={item.img}
                   alt={item.name}
-                  sx={{ height: 180, objectFit: "cover" }}
+                  sx={{ height: 180, objectFit: "cover", borderRadius: "8px 8px 0 0" }}
                 />
                 <CardContent
                   sx={{
@@ -79,26 +85,30 @@ export default function Home({ goToCart }) {
                       {item.name}
                     </Typography>
 
-                    {/* Variant Selector */}
-                    <Select
-                      size="small"
-                      value={selectedVariant.label}
-                      onChange={(e) =>
-                        handleVariantChange(
-                          item.id,
-                          item.variants.find(
-                            (v) => v.label === e.target.value
+                    {/* Dynamic Variant Selector */}
+                    {item.variants.length > 1 ? (
+                      <Select
+                        size="small"
+                        value={selectedVariant.label}
+                        onChange={(e) =>
+                          handleVariantChange(
+                            item.id,
+                            item.variants.find(
+                              (v) => v.label === e.target.value
+                            )
                           )
-                        )
-                      }
-                      sx={{ mb: 1, minWidth: 120 }}
-                    >
-                      {item.variants.map((variant) => (
-                        <MenuItem key={variant.label} value={variant.label}>
-                          {variant.label} - ₹{variant.price}
-                        </MenuItem>
-                      ))}
-                    </Select>
+                        }
+                        sx={{ mb: 1, minWidth: 120 }}
+                      >
+                        {item.variants.map((variant) => (
+                          <MenuItem key={variant.label} value={variant.label}>
+                            {variant.label} - ₹{variant.price}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    ) : (
+                      <Typography sx={{ mb: 1 }}>₹{item.variants[0].price}</Typography>
+                    )}
                   </Box>
 
                   {/* + - controls */}
@@ -154,26 +164,43 @@ export default function Home({ goToCart }) {
 
   return (
     <Box sx={{ padding: "24px", minHeight: "100vh" }}>
-      <Promo></Promo>
-      <Paper
-        elevation={3}
-        sx={{ padding: "16px", marginBottom: "24px", textAlign: "center" }}
-      >
-        <Typography variant="body2">
-          Serving love in every meal and mithai🍴🍬
-        </Typography>
-      </Paper>
+      {/* Hero Messages */}
+      <Stack spacing={2} sx={{ mb: 4 }}>
+        <Paper
+          elevation={4}
+          sx={{
+            padding: "16px",
+            textAlign: "center",
+            bgcolor: "linear-gradient(90deg, #ffb347, #ffcc33)",
+            borderRadius: 3,
+          }}
+        >
+          <Typography variant="h6" fontWeight="bold" color="primary">
+            Fill your plate, not the fee 🚚✨ Free delivery on ₹350+ orders!
+          </Typography>
+        </Paper>
 
-      {/* 🔍 Search Bar */}
-      <TextField
-        label="Search items..."
-        variant="outlined"
-        fullWidth
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        sx={{ mb: 3 }}
-      />
+        <Paper
+          elevation={4}
+          sx={{
+            padding: "16px",
+            textAlign: "center",
+            bgcolor: "linear-gradient(90deg, #2196f3, #64b5f6)",
+            color: "#fff",
+            borderRadius: 3,
+          }}
+        >
+          <Typography variant="h6" fontWeight="bold">
+            Festive Rush? No Tension! Pre-Book Your Sweets Now. 😍
+          </Typography>
+          <Typography variant="body2" sx={{ mt: 1, color: 'chocolate' }}>
+            Shaadi ho, party ho ya corporate get-together 🪔 We’ve got the
+            perfect catering for every event.
+          </Typography>
+        </Paper>
+      </Stack>
 
+      {/* Tabs */}
       <Tabs
         value={selectedTab}
         onChange={(e, v) => setSelectedTab(v)}
