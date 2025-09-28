@@ -275,12 +275,6 @@ export const menu = {
       variants: [{ label: "Single", price: 12 }],
     },
     {
-      id: 119,
-      name: "Missi Roti",
-      img: "images/missi-roti.jpeg",
-      variants: [{ label: "Single", price: 28 }],
-    },
-    {
       id: 120,
       name: "Plain Rice",
       img: "images/plain-rice.jpeg",
