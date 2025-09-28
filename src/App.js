@@ -24,8 +24,18 @@ function App() {
   // Theme config
   const theme = createTheme({
     palette: {
-      primary: { main: "#2e7d32", light: "#60ad5e", dark: "#005005", contrastText: "#fff" },
-      secondary: { main: "#fbc02d", light: "#fff263", dark: "#c49000", contrastText: "#000" },
+      primary: {
+        main: "#2e7d32",
+        light: "#60ad5e",
+        dark: "#005005",
+        contrastText: "#fff",
+      },
+      secondary: {
+        main: "#fbc02d",
+        light: "#fff263",
+        dark: "#c49000",
+        contrastText: "#000",
+      },
       background: { default: "#fdfdf6", paper: "#ffffff" },
       error: { main: "#d32f2f" },
     },
@@ -33,7 +43,11 @@ function App() {
       fontFamily: "'Poppins', 'Roboto', sans-serif",
       h4: { fontWeight: 700, color: "#2e7d32" },
       h6: { fontWeight: 600, color: "#fbc02d" },
-      button: { textTransform: "none", fontWeight: "bold", borderRadius: "25px" },
+      button: {
+        textTransform: "none",
+        fontWeight: "bold",
+        borderRadius: "25px",
+      },
     },
     shape: { borderRadius: 16 },
   });
@@ -93,8 +107,10 @@ function App() {
         </Toolbar>
       </AppBar>
 
-      <Container sx={{ mt: 3 }}>
-        {step === "home" && <Home goToCart={() => setStep("cart")} search={search} />}
+      <Container sx={{ mt: 0, p:0 }}>
+        {step === "home" && (
+          <Home goToCart={() => setStep("cart")} search={search} />
+        )}
         {step === "cart" && <Cart goToCheckout={() => setStep("checkout")} />}
         {step === "checkout" && <Checkout />}
       </Container>

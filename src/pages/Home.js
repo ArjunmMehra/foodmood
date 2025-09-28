@@ -230,55 +230,22 @@ export default function Home({ search }) {
       }}
     >
       {/* Carousel Banner */}
-      <Slider {...sliderSettings}>
-      <Box>
-          <img
-            src="/images/banner5.jpeg"
-            alt="Banner 1"
-            style={{
-              width: "100%",
-              borderRadius: "12px",
-              maxHeight: "250px",
-              objectFit: "cover",
-            }}
-          />
-        </Box>
-        <Box>
-          <img
-            src="/images/banner1.jpeg"
-            alt="Banner 1"
-            style={{
-              width: "100%",
-              borderRadius: "12px",
-              maxHeight: "250px",
-              objectFit: "cover",
-            }}
-          />
-        </Box>
-        <Box>
-          <img
-            src="/images/banner2.jpeg"
-            alt="Banner 2"
-            style={{
-              width: "100%",
-              borderRadius: "12px",
-              maxHeight: "220px",
-              objectFit: "cover",
-            }}
-          />
-        </Box>
-        <Box>
-          <img
-            src="/images/banner3.jpeg"
-            alt="Banner 3"
-            style={{
-              width: "100%",
-              borderRadius: "12px",
-              maxHeight: "220px",
-              objectFit: "cover",
-            }}
-          />
-        </Box>
+       {/* Carousel Banner */}
+       <Slider {...sliderSettings} style={{ margin: 0 }}>
+        {["banner5.jpeg", "banner2.jpeg", "banner3.jpeg", "banner1.jpeg", "banner2.jpeg", ].map((img, idx) => (
+          <Box key={idx} sx={{ width: "100%", px: 0 }}>
+            <img
+              src={`/images/${img}`}
+              alt={`Banner ${idx + 1}`}
+              style={{
+                width: "100%",
+                borderRadius: 0,
+                maxHeight: "180px",
+                objectFit: "cover",
+              }}
+            />
+          </Box>
+        ))}
       </Slider>
 
       {/* 🔥 Scrollable Horizontal Menu with All Items */}
@@ -286,8 +253,10 @@ export default function Home({ search }) {
         sx={{
           display: "flex",
           overflowX: "auto",
-          p: 1,
+          p: 0,
+          pt:0,
           gap: 2,
+          m:0,
           scrollbarWidth: "none",
           "&::-webkit-scrollbar": { display: "none" },
         }}
@@ -301,7 +270,7 @@ export default function Home({ search }) {
                 minWidth: 100,
                 maxWidth: 120,
                 flexShrink: 0,
-                borderRadius: 1,
+                borderRadius: 0,
                 boxShadow: 3,
               }}
             >
@@ -314,7 +283,7 @@ export default function Home({ search }) {
                   objectFit: "cover",
                 }}
               />
-              <CardContent sx={{ p: 1, backgroundColor: "aliceblue" }}>
+              {/* <CardContent sx={{ p: 1, backgroundColor: "aliceblue" }}>
                 <Typography
                   variant="subtitle2"
                   fontWeight="normal"
@@ -323,7 +292,7 @@ export default function Home({ search }) {
                 >
                   {item.name}
                 </Typography>
-              </CardContent>
+              </CardContent> */}
             </Card>
           ))}
       </Box>
@@ -362,7 +331,7 @@ export default function Home({ search }) {
         <Tab label="🍛 Main Course" />
       </Tabs>
 
-      <Box sx={{ mt: 2 }}>
+      <Box sx={{ mt: 0 }}>
         {selectedTab === 0 && renderItems(menu.sweets)}
         {selectedTab === 1 && renderItems(menu.mainCourse)}
       </Box>
