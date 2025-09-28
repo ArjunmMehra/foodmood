@@ -231,6 +231,18 @@ export default function Home({ search }) {
     >
       {/* Carousel Banner */}
       <Slider {...sliderSettings}>
+      <Box>
+          <img
+            src="/images/banner5.jpeg"
+            alt="Banner 1"
+            style={{
+              width: "100%",
+              borderRadius: "12px",
+              maxHeight: "250px",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
         <Box>
           <img
             src="/images/banner1.jpeg"
@@ -316,8 +328,8 @@ export default function Home({ search }) {
           ))}
       </Box>
 
-      {/* Hero Messages */}
-      <Stack spacing={1} sx={{ mt: 2, mb: 2 }}>
+
+      {/* <Stack spacing={1} sx={{ mt: 2, mb: 2 }}>
         <Paper elevation={1} sx={{ padding: "10px", textAlign: "center" }}>
           <Typography variant="body2">
             Serving love in every meal and mithai 🍴🍬
@@ -336,7 +348,7 @@ export default function Home({ search }) {
             Festive Rush? No Tension! Pre-Book Your Sweets Now. 😍
           </Typography>
         </Paper>
-      </Stack>
+      </Stack> */}
 
       {/* Tabs */}
       <Tabs

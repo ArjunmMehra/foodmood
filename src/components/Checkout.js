@@ -27,7 +27,7 @@ export default function Checkout() {
   const deliveryCharge = subtotal < 250 && subtotal > 0 ? 10 : 0;
   const total = subtotal + deliveryCharge;
 
-  const phoneNumbers = ["9910913565", "9873398504", "9773832474", "9318333632"];
+  const phoneNumbers = ["9910913565", "9873398504", "9773832474", "9315900193"];
 
   const handleOrder = () => {
     if (!address || !mobile) {
@@ -43,7 +43,7 @@ export default function Checkout() {
       }\nTotal: ₹${total}\n\nAddress: ${address}\nMobile: ${mobile}`
     );
 
-    window.open(`https://wa.me/919773832474?text=${message}`, "_blank");
+    window.open(`https://wa.me/919315900193?text=${message}`, "_blank");
   };
 
   return (
