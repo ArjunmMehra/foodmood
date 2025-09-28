@@ -65,9 +65,10 @@ export default function Home({ search }) {
               <Card
                 sx={{
                   width: "100%",
-                  maxWidth: 120,
+                  maxWidth: 180,
+                  minWidth:150,
                   height: 250,
-                  margin: "auto",
+                  margin: 0,
                   borderRadius: 2,
                 }}
               >
