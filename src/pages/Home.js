@@ -327,6 +327,16 @@ export default function Home({ search }) {
         centered
         textColor="primary"
         indicatorColor="primary"
+        sx={{
+          "& .MuiTab-root": {
+            fontSize: "1rem", // ⬅️ increase label size
+            fontWeight: "bold",
+            minWidth: "120px",
+          },
+          "& .Mui-selected": {
+            fontSize: "1.1rem", // slightly larger when active
+          },
+        }}
       >
         <Tab label="🍬 Sweets" />
         <Tab label="🍛 Main Course" />
