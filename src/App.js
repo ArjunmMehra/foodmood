@@ -1,121 +1,341 @@
 import React, { useState } from "react";
-import Home from "./pages/Home";
-import Cart from "./components/Cart";
-import Checkout from "./components/Checkout";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart, selectCart } from "./store/cartSlice";
 import {
-  AppBar,
-  Toolbar,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
   Typography,
   Button,
-  Container,
   Box,
-  CssBaseline,
-  TextField,
+  Tabs,
+  Tab,
+  Select,
+  MenuItem,
+  Paper,
+  Fab,
 } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useSelector } from "react-redux";
-import { selectCart } from "./store/cartSlice";
+import Slider from "react-slick";
+import { menu } from "./data/menu";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-function App() {
-  const [step, setStep] = useState("home");
-  const [search, setSearch] = useState(""); // 🔍 search state
-  const cart = useSelector(selectCart);
+export default function Home({ search, goToCart }) {
+  const dispatch = useDispatch();
+  const items = useSelector(selectCart);
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedVariants, setSelectedVariants] = useState({});
 
-  // Theme config
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#2e7d32",
-        light: "#60ad5e",
-        dark: "#005005",
-        contrastText: "#fff",
-      },
-      secondary: {
-        main: "#fbc02d",
-        light: "#fff263",
-        dark: "#c49000",
-        contrastText: "#000",
-      },
-      background: { default: "#fdfdf6", paper: "#ffffff" },
-      error: { main: "#d32f2f" },
-    },
-    typography: {
-      fontFamily: "'Poppins', 'Roboto', sans-serif",
-      h4: { fontWeight: 700, color: "#2e7d32" },
-      h6: { fontWeight: 600, color: "#fbc02d" },
-      button: {
-        textTransform: "none",
-        fontWeight: "bold",
-        borderRadius: "25px",
-      },
-    },
-    shape: { borderRadius: 16 },
-  });
+  // get item qty
+  const getQuantity = (id, variantLabel) => {
+    const cartItem = items.find(
+      (i) => i.id === id && i.variant === variantLabel
+    );
+    return cartItem ? cartItem.quantity : 0;
+  };
+
+  const handleVariantChange = (itemId, variant) => {
+    setSelectedVariants((prev) => ({ ...prev, [itemId]: variant }));
+  };
+
+  // render items
+  const renderItems = (items) => {
+    const filtered = items.filter((item) =>
+      item.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    if (filtered.length === 0) {
+      return (
+        <Typography sx={{ mt: 3, textAlign: "center" }}>
+          ❌ No items found
+        </Typography>
+      );
+    }
+
+    return (
+      <Grid container spacing={2} justifyContent="center">
+        {filtered.map((item) => {
+          const selectedVariant = selectedVariants[item.id] || item.variants[0];
+          const quantity = getQuantity(item.id, selectedVariant.label);
+
+          return (
+            <Grid item xs={6} sm={4} md={3} key={item.id}>
+              <Card
+                sx={{
+                  width: "100%",
+                  maxWidth: 180,
+                  minWidth: 150,
+                  height: 250,
+                  margin: 0,
+                  borderRadius: 2,
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={item.img}
+                  alt={item.name}
+                  sx={{ height: 100, objectFit: "cover" }}
+                />
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    height: "120px",
+                    p: 1,
+                    pb: "4px",
+                  }}
+                >
+                  <Typography
+                    variant="subtitle2"
+                    fontWeight="bold"
+                    sx={{ mb: 1, textAlign: "center" }}
+                  >
+                    {item.name}
+                  </Typography>
+
+                  {/* Variant + Controls */}
+                  <Box
+                    sx={{
+                      bgcolor: "#f9f9f9",
+                      borderRadius: 1,
+                      p: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Select
+                      size="small"
+                      value={selectedVariant.label}
+                      onChange={(e) =>
+                        handleVariantChange(
+                          item.id,
+                          item.variants.find((v) => v.label === e.target.value)
+                        )
+                      }
+                      sx={{
+                        mb: 1,
+                        fontSize: "0.75rem",
+                        ".MuiSelect-select": { p: 0.5 },
+                        minWidth: 70,
+                        bgcolor: "white",
+                        borderRadius: 0.5,
+                      }}
+                    >
+                      {item.variants.map((variant) => (
+                        <MenuItem
+                          key={variant.label}
+                          value={variant.label}
+                          sx={{ fontSize: "0.75rem" }}
+                        >
+                          {variant.label} - ₹{variant.price}
+                        </MenuItem>
+                      ))}
+                    </Select>
+
+                    {/* + - buttons */}
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        sx={{
+                          minWidth: "28px",
+                          width: "40px",
+                          height: "28px",
+                          fontSize: "0.8rem",
+                          borderRadius: 0.5,
+                          p: 0,
+                        }}
+                        onClick={() =>
+                          dispatch(
+                            removeFromCart({
+                              id: item.id,
+                              variant: selectedVariant.label,
+                            })
+                          )
+                        }
+                        disabled={quantity === 0}
+                      >
+                        -
+                      </Button>
+                      <Typography
+                        sx={{
+                          mx: 1,
+                          fontWeight: "bold",
+                          fontSize: "0.9rem",
+                        }}
+                      >
+                        {quantity}
+                      </Typography>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        sx={{
+                          minWidth: "28px",
+                          width: "40px",
+                          height: "28px",
+                          fontSize: "0.8rem",
+                          borderRadius: 0.5,
+                          p: 0,
+                        }}
+                        onClick={() =>
+                          dispatch(
+                            addToCart({
+                              ...item,
+                              price: selectedVariant.price,
+                              variant: selectedVariant.label,
+                            })
+                          )
+                        }
+                      >
+                        +
+                      </Button>
+                    </Box>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          );
+        })}
+      </Grid>
+    );
+  };
+
+  // carousel settings
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppBar
-        position="static"
+    <Box
+      sx={{
+        padding: 0,
+        minHeight: "100vh",
+        backgroundImage: "url('/images/bg.jpg')",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        position: "relative",
+      }}
+    >
+      {/* Carousel Banner */}
+      <Slider {...sliderSettings} style={{ margin: 0 }}>
+        {["banner5.jpeg", "banner2.jpeg", "banner3.jpeg", "banner1.jpeg"].map(
+          (img, idx) => (
+            <Box key={idx} sx={{ width: "100%", px: 0 }}>
+              <img
+                src={`/images/${img}`}
+                alt={`Banner ${idx + 1}`}
+                style={{
+                  width: "100%",
+                  borderRadius: 0,
+                  maxHeight: "180px",
+                  objectFit: "cover",
+                }}
+              />
+            </Box>
+          )
+        )}
+      </Slider>
+
+      {/* Scrollable Horizontal Menu */}
+      <Box
         sx={{
-          background: "linear-gradient(90deg, #2e7d32, #fbc02d)",
+          display: "flex",
+          overflowX: "auto",
+          p: 0,
+          gap: 2,
+          scrollbarWidth: "none",
+          "&::-webkit-scrollbar": { display: "none" },
         }}
       >
-        <Toolbar sx={{ pl: 0 }}>
-          {/* Logo */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              cursor: "pointer",
-              mr: 2,
-            }}
-            onClick={() => setStep("home")}
-          >
-            <Box
-              component="img"
-              src={"images/logo.png"}
-              alt="Logo"
-              sx={{ height: 60, width: 60, mb: 0.1 }}
-            />
-          </Box>
-
-          {/* 🔍 Search Bar */}
-          {step === "home" && (
-            <TextField
-              size="small"
-              placeholder="Search..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+        {Object.values(menu)
+          .flat()
+          .map((item) => (
+            <Card
+              key={item.id}
               sx={{
-                backgroundColor: "white",
-                borderRadius: 2,
-                minWidth: { xs: "100px", sm: "250px" },
+                minWidth: 100,
+                maxWidth: 120,
+                flexShrink: 0,
+                borderRadius: 0,
+                boxShadow: 3,
               }}
-            />
-          )}
+            >
+              <CardMedia
+                component="img"
+                image={item.img}
+                alt={item.name}
+                sx={{
+                  height: 60,
+                  objectFit: "cover",
+                }}
+              />
+            </Card>
+          ))}
+      </Box>
 
-          {/* Cart Button */}
-          <Button
-            color="inherit"
-            sx={{ marginLeft: "auto" }}
-            onClick={() => setStep("cart")}
-          >
-            Cart ({cart.length})
-          </Button>
-        </Toolbar>
-      </AppBar>
+      {/* Tabs */}
+      <Tabs
+        value={selectedTab}
+        onChange={(e, v) => setSelectedTab(v)}
+        centered
+        textColor="primary"
+        indicatorColor="primary"
+        sx={{
+          "& .MuiTab-root": {
+            fontSize: "1rem",
+            fontWeight: "bold",
+            minWidth: "120px",
+          },
+          "& .Mui-selected": {
+            fontSize: "1.1rem",
+          },
+        }}
+      >
+        <Tab label="🍬 Sweets" />
+        <Tab label="🍛 Main Course" />
+      </Tabs>
 
-      <Container sx={{ mt: 0, p:0 }}>
-        {step === "home" && (
-          <Home goToCart={() => setStep("cart")} search={search} />
-        )}
-        {step === "cart" && <Cart goToCheckout={() => setStep("checkout")} />}
-        {step === "checkout" && <Checkout />}
-      </Container>
-    </ThemeProvider>
+      <Box sx={{ mt: 0 }}>
+        {selectedTab === 0 && renderItems(menu.sweets)}
+        {selectedTab === 1 && renderItems(menu.mainCourse)}
+      </Box>
+
+      {/* 🛒 Floating View Cart Button */}
+      {items.length > 0 && (
+        <Fab
+          variant="extended"
+          color="success"
+          onClick={goToCart}
+          sx={{
+            position: "fixed",
+            bottom: 16,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 1000,
+            px: 3,
+            fontWeight: "bold",
+          }}
+        >
+          <ShoppingCartIcon sx={{ mr: 1 }} />
+          View Cart ({items.length})
+        </Fab>
+      )}
+    </Box>
   );
 }
-
-export default App;

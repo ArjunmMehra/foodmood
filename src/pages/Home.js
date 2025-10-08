@@ -150,9 +150,10 @@ export default function Home({ search }) {
                         size="small"
                         sx={{
                           minWidth: "28px",
-                          width: "28px",
+                          width: "40px",
                           height: "28px",
                           fontSize: "0.8rem",
+                          borderRadius: 0.5,
                           p: 0,
                         }}
                         onClick={() =>
@@ -181,9 +182,10 @@ export default function Home({ search }) {
                         size="small"
                         sx={{
                           minWidth: "28px",
-                          width: "28px",
+                          width: "40px",
                           height: "28px",
                           fontSize: "0.8rem",
+                          borderRadius: 0.5,
                           p: 0,
                         }}
                         onClick={() =>
